@@ -25,7 +25,7 @@ Incoming IPV4 TCP From WAN port 998 to this device port 998
 Download binary with
 ```
 wget https://github.com/fatedier/frp/releases/download/v0.40.0/frp_0.40.0_linux_arm.tar.gz
-tar -xzvt frp_0.40.0_linux_arm.tar.gz
+tar -zxvf frp_0.40.0_linux_arm.tar.gz
 cd frp_0.40.0_linux_arm
 cp frps /usr/bin
 cp frps.ini /usr/bin
