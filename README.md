@@ -51,4 +51,9 @@ Execute this
 ```
 /etc/init.d/frps enable
 ```
+
+## Install Openvpn
+Under Software, install openvpn-openssl and luci-app-openvpn.
+OpenVPN menu will appear
+
 Reboot
