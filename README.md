@@ -21,7 +21,7 @@ Incoming IPV4 TCP From WAN port 995 to this device port 995
 Incoming IPV4 TCP From WAN port 998 to this device port 998
 ```
 
-# Install frps
+## Install frps
 Download binary with
 ```
 wget https://github.com/fatedier/frp/releases/download/v0.40.0/frp_0.40.0_linux_arm.tar.gz
