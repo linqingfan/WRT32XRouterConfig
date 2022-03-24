@@ -32,7 +32,7 @@ cp frps.ini /usr/bin
 vi /etc/init.d/frps
 ```
 
-Paste the following content in frps file:
+Paste the following content in /etc/init.d/frps file:
 
 ```
 #!/bin/sh /etc/rc.common
@@ -49,6 +49,7 @@ stop() {
 ```
 Execute this
 ```
+chmod +x /etc/init.d/frps
 /etc/init.d/frps enable
 ```
 
@@ -57,3 +58,55 @@ Under Software, install openvpn-openssl and luci-app-openvpn.
 OpenVPN menu will appear
 
 Reboot
+
+
+# For Default WRT32X
+change /etc/config/uhttpd
+```
+80 to 8080
+443 to 943
+```
+add /etc/config/firewall with:
+```
+config rule
+        option src 'wan'
+        option dest '*'
+        option dest_port '995'
+        option proto 'tcp'
+        option target 'ACCEPT'
+
+config rule
+        option src 'wan'
+        option dest '*'
+        option dest_port '998'
+        option proto 'tcp'
+        option target 'ACCEPT'
+config rule
+        option src 'wan'
+        option dest '*'
+        option dest_port '80'
+        option proto 'tcp'
+        option target 'ACCEPT'
+
+```
+
+Paste the following content in /etc/init.d/frps file:
+
+```
+#!/bin/sh /etc/rc.common
+START=98
+
+start() {
+        /usr/bin/frps -c /usr/bin/frps.ini
+}
+
+stop() {
+        killall frps
+        return 0
+}
+```
+Execute this
+```
+chmod +x /etc/init.d/frps
+/etc/init.d/frps enable
+```
